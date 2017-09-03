@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--引入font样式  -->
+    <link rel="stylesheet" type="text/css" href="lib/font/iconfont.css">
+    <!--引入初始化样式  -->
+    <link rel="stylesheet" href="./less/base.css">
+    <!--引入页面样式  -->
+    <link rel="stylesheet" href="./less/index.css">
+</head>
+
+<body>
+    <!--主容器  -->
+    <div id="layout">
+        <!--主页面  -->
+        <div id="hlmh">
+            <!--状态栏  -->
+            <div id="topbar">
+                <span class="sidebtn iconfont icon-guanwang30icon24"></span>
+                <h1>红旅漫画</h1>
+                <span class="search iconfont icon-search"></span>
+            </div>
+            <!--轮播图  -->
+            <div id="slider" class="swiper-container">
+            </div>
+            <!--tab栏  -->
+            <div id="tabbar">
+                <ul class="tab-list clearfix">
+                    <li class="tab-item active" tabType="1">新增连载</li>
+                    <li class="tab-item" tabType="2">新增完结</li>
+                    <li class="tab-item" tabType="3">推荐连载</li>
+                    <li class="tab-item" tabType="4">推荐完结</li>
+                </ul>
+            </div>
+            <!--主体  -->
+            <div id="body"></div>
+            <!--遮罩层  -->
+            <div id="cover"></div>
+        </div>
+        <!--功能页面  -->
+        <div id="action">
+            <img src="./img/logo.jpg" alt="">
+            <p class="serialize">
+                <span>连载漫画-get</span>
+                <i class="iconfont icon-more"></i>
+            </p>
+            <p class="subject">
+                <span>专题列表-get</span>
+                <i class="iconfont icon-more"></i>
+            </p>
+            <p class="about">
+                <span>关于</span>
+                <i class="iconfont icon-more"></i>
+            </p>
+        </div>
+        <!--连载页面  -->
+        <div id="serialize">
+            <div class="serializeTitle">
+                <i class="serializeBack iconfont icon-back"></i>
+                <h2>连载动漫</h2>
+            </div>
+        </div>
+        <!--专题页面  -->
+        <div id="subject">
+            <div class="subjectTitle">
+                <i class="subjectBack iconfont icon-back"></i>
+                <h2>专题列表</h2>
+            </div>
+        </div>
+    </div>
+</body>
+<!--轮播图模版  -->
+<script type="text/html" id='slider-template'>
+    <ul class="slider-list clearfix swiper-wrapper">
+        {{each}}
+        <li class="swiper-slide">
+            <a href="{{$value.url}}"><img src="{{$value.img}}" alt=""></a>
+            <p class="slider-shadow">{{$value.title}}</p>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+<!--主体模版  -->
+<script type="text/html" id="body-template">
+    <ul class="body-list clearfix">
+        {{each}}
+        <li class="body-item">
+            <a href="{{$value.url}}">
+                <img src="{{$value.img}}" alt="">
+                <p class="updata">{{$value.update}}</p>
+                <p class="name">{{$value.name}}</p>
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+<!--连载模版  -->
+<script type="text/html" id="serialize-template">
+    {{each}}
+    <div class="serializeItem clearfix">
+        <a href="{{$value.url}}"><img src="{{$value.img}}" alt=""></a>
+        <div class="serializeDes">
+            <a href="{{$value.url}}">{{$value.name}}</a>
+            <p>{{$value.episode}}</p>
+            <p>{{$value.updateTime}}</p>
+            <p>下载次数：{{$value.downloadCount}}</p>
+        </div>
+    </div>
+    {{/each}}
+</script>
+<!--专题模版  -->
+<script type="text/html" id="subject-template">
+    {{each}}
+    <div class="subjectItem clearfix">
+        <a href="{{$value.url}}">
+            <img src="{{$value.img}}" alt="">
+        </a>
+        <p>{{$value.title}}</p>
+    </div>
+    {{/each}}
+</script>
+<!--引入jquery  -->
+<script src="./lib/jquery-1.12.4.js"></script>
+<!-- 引入swiper的js -->
+<script src="./lib/swiper/swiper-3.4.2.jquery.min.js"></script>
+<!--引入模版引擎  -->
+<script src="./lib/template-web.js"></script>
+<!--引入index的js  -->
+<script src="./js/index.js"></script>
+
+</html>
